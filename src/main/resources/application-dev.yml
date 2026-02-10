@@ -1,0 +1,15 @@
+spring:
+  cache:
+    enabled: false
+  messages:
+    encoding: UTF-8
+
+mongo-properties:
+  url: ${MONGODB_URL:mongodb://${mongo-properties.username}:${mongo-properties.password}@${mongo-properties.host}:${mongo-properties.port}/${mongo-properties.database}?${mongo-properties.query-string}}
+  host: ${MONGO_HOST:127.0.0.1}
+  port: ${MONGO_PORT:27017}
+  database: ${MONGO_DB:opincaptransacional}
+  username: ${MONGO_USER:admin}
+  password: ${MONGO_PASS:admin!}
+  query-string: ${MONGO_QUERY_STRING:authSource=admin}
+

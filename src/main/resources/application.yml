@@ -1,0 +1,66 @@
+info:
+  application:
+    name: ${spring.application.name}
+    version: "2.0.0"
+    description: "Insurance Capitalization Title Service"
+    swaggerVersion: 2.0.0
+
+server:
+  compression:
+    enabled: true
+    mime-types: text/javascript,application/javascript,application/json
+    min-response-size: 1024
+  port: ${SERVER_PORT:8080}
+  servlet.context-path: ${APPLICATION_CONTEXT:}
+
+# Root level properties for Spring @Value annotations
+url:
+  platform: ${URL_PLATFORM:http://localhost:8080}
+
+gateway:
+  port: ${GATEWAY_PORT:#{null}}
+
+application:
+  timeZone: GMT-3
+  rest:
+    config:
+      timeout: 60000
+      connectTimeout: 60000
+
+spring:
+  jackson:
+    default-property-inclusion: NON_EMPTY
+  messages:
+    encoding: UTF-8
+  jmx:
+    enabled: false
+  main:
+    banner-mode: "off"
+    lazy-initialization: false
+  application:
+    name: Open Insurance
+  data:
+    web:
+      pageable:
+        one-indexed-parameters: true
+        page-parameter: page
+        size-parameter: page-size
+  profiles:
+    active: ${SPRING_PROFILES_ACTIVE:production}
+
+mongo-properties:
+  url: ${MONGODB_URL:mongodb://${mongo-properties.username}:${mongo-properties.password}@${mongo-properties.host}:${mongo-properties.port}/${mongo-properties.database}?${mongo-properties.query-string}}
+  host: ${MONGO_HOST:localhost}
+  port: ${MONGO_PORT:27017}
+  database: ${MONGO_DB:opincaptransacional}
+  username: ${MONGO_USER:admin}
+  password: ${MONGO_PASS:admin!}
+  query-string: ${MONGO_QUERY_STRING:authSource=admin}
+  connectionPoolMinSize: ${MONGO_POOL_MIN_SIZE:10}
+  connectionPoolMaxSize: ${MONGO_POOL_MAX_SIZE:100}
+  connectionPoolMaxConnectionLifeTime: ${MONGO_POOL_MAX_CONN_LIFE_TIME:30000}
+  connectionPoolMaxConnectionIdleTime: ${MONGO_POOL_MAX_CONN_IDLE_TIME:30000}
+  connectionPoolMaintenanceInitialDelay: ${MONGO_POOL_MAINT_INIT_DELAY:0}
+  connectionPoolMaintenanceFrequency: ${MONGO_POOL_MAINT_FREQ:60000}
+  connectionPoolMaxWaitTime: ${MONGO_POOL_MAX_WAIT_TIME:120000}
+

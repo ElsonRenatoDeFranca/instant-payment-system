@@ -1,0 +1,62 @@
+version: '3.8'
+
+services:
+  mongodb:
+    image: mongo:7.0
+    container_name: opin-mongodb
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: admin!
+      MONGO_INITDB_DATABASE: opincaptransacional
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodb_data:/data/db
+      - mongodb_config:/data/configdb
+    networks:
+      - opin-network
+    healthcheck:
+      test: echo 'db.runCommand("ping").ok' | mongosh localhost:27017/test --quiet
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    restart: unless-stopped
+
+  opin-app:
+    image: opin-srv-app:latest
+    container_name: opin-srv-cap-transacionais
+    depends_on:
+      mongodb:
+        condition: service_healthy
+    environment:
+      MONGO_HOST: mongodb
+      MONGO_PORT: 27017
+      MONGO_USER: admin
+      MONGO_PASS: admin!
+      MONGO_DB: opincaptransacional
+      MONGO_QUERY_STRING: authSource=admin
+      SERVER_PORT: 8080
+      SPRING_PROFILES_ACTIVE: production
+      URL_PLATFORM: http://localhost:8080
+    ports:
+      - "8080:8080"
+    networks:
+      - opin-network
+    restart: unless-stopped
+    healthcheck:
+      test: curl -f http://localhost:8080/actuator/health || exit 1
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+volumes:
+  mongodb_data:
+    driver: local
+  mongodb_config:
+    driver: local
+
+networks:
+  opin-network:
+    driver: bridge
+

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+
+    <property name="NAME" value="opin-srv-cap-transacionais" />
+    <property name="ARCHIVED" value="archived" />
+    <property name="FILESIZE" value="10MB" />
+
+    <!-- Default PATH is /tmp, if you want to change use environment variable  !-->
+    <!-- Example:java -jar -DPATH_LOGS=./log/ target/opin-srv-re-produtos-chassis-chassis.jar !-->
+    <property name="PATH" value="${PATH_LOGS:-/tmp}" />
+
+    <appender name="Console"
+              class="ch.qos.logback.core.ConsoleAppender">
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <Pattern>
+                %black(%d{ISO8601}) %highlight(%-5level) [%blue(%t)] %yellow(%C{1}): %msg%n%throwable
+            </Pattern>
+        </layout>
+    </appender>
+
+    <!-- init springProfile production !-->
+    <springProfile name="prod, production">
+
+        <appender name="RollingFile"
+                  class="ch.qos.logback.core.rolling.RollingFileAppender">
+            <file>${PATH}/${NAME}/${NAME}.log</file>
+
+            <encoder
+                    class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+                <Pattern>%d %p %C{1} [%t] %m%n %msg%n%throwable{1}</Pattern>
+            </encoder>
+
+            <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+                <fileNamePattern>${PATH}/${NAME}/${ARCHIVED}/${NAME}-%d{yyyy-MM-dd}-%i.log</fileNamePattern>
+                <maxHistory>1</maxHistory>
+                <maxFileSize>${FILESIZE}</maxFileSize>
+                <totalSizeCap>10MB</totalSizeCap>
+            </rollingPolicy>
+        </appender>
+
+        <root level="${ROOT_LOG_LEVEL:-INFO}">
+            <appender-ref ref="Console" />
+            <appender-ref ref="RollingFile" />
+        </root>
+
+        <logger name="br.com.bradescoseguros" level="INFO" additivity="false">
+            <appender-ref ref="Console" />
+            <appender-ref ref="RollingFile" />
+        </logger>
+
+    </springProfile>
+    <!-- finish springProfile production !-->
+
+
+    <!-- init springProfile development !-->
+    <springProfile name="dev, development">
+        <root level="${ROOT_LOG_LEVEL:-INFO}">
+            <appender-ref ref="Console" />
+        </root>
+    </springProfile>
+    <!-- finish springProfile development !-->
+
+
+    <!-- init springProfile debug !-->
+    <springProfile name="debug">
+        <root level="${ROOT_LOG_LEVEL:-DEBUG}">
+            <appender-ref ref="Console" />
+        </root>
+    </springProfile>
+    <!-- finish springProfile debug !-->
+
+</configuration>

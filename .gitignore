@@ -1,0 +1,229 @@
+################################################################################
+#                                                                              #
+#                    PIX SYSTEM - JAVA 21 / SPRING BOOT 3.3                   #
+#                                                                              #
+################################################################################
+
+# =============================================================================
+# BUILD ARTIFACTS & DEPENDENCIES
+# =============================================================================
+
+# Maven Build Output
+target/
+.m2/
+.mvn/wrapper/maven-wrapper.jar
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.backup
+pom.xml.next
+release.properties
+dependency-reduced-pom.xml
+.flattened-pom.xml
+
+# Gradle (if used)
+.gradle/
+build/
+out/
+
+# Compiled Java class files
+*.class
+*.classpath
+
+# Package files
+*.jar
+*.war
+*.nar
+*.ear
+*.zip
+*.tar.gz
+*.rar
+*.exe
+
+# =============================================================================
+# IDE & EDITOR CONFIGURATION
+# =============================================================================
+
+# IntelliJ IDEA
+.idea/
+*.iml
+*.iws
+*.ipr
+*.java~
+
+# VSCode
+.vscode/
+*.code-workspace
+
+# Eclipse
+.project
+.settings/
+.classpath
+bin/
+.factorypath
+
+# NetBeans
+nbproject/
+.nb-gradle/
+
+# Sublime Text
+*.sublime-workspace
+*.sublime-project
+
+# Vim
+*.swp
+*.swo
+*~
+.vim/
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# =============================================================================
+# LOGS & TEMPORARY FILES
+# =============================================================================
+
+# Log files
+*.log
+*.log.*
+log/
+logs/
+
+# Temporary files
+*.tmp
+*.temp
+*.bak
+*.swp
+*.swo
+*~
+.temp/
+
+# =============================================================================
+# RUNTIME & PROCESS FILES
+# =============================================================================
+
+# Maven / Spring Boot
+.mvn/
+mvnw.log
+
+# Process files
+*.pid
+*.lck
+
+# =============================================================================
+# SECURITY & CREDENTIALS
+# =============================================================================
+
+# Application properties with sensitive data
+application-dev.properties.local
+application-local.properties
+application-secrets.yml
+.env
+.env.local
+.env.*.local
+
+# SSH/Security files
+.ssh/
+*.pem
+*.key
+*.pub
+id_rsa*
+
+# =============================================================================
+# GENERATED & CACHE FILES
+# =============================================================================
+
+# Java
+.classpath
+.factorypath
+.project
+.c9/
+
+# Cache
+.cache/
+*.cache
+*/.cache
+.gradle
+
+# Test Coverage
+.jacoco/
+coverage/
+*.exec
+
+# =============================================================================
+# SYSTEM & PLATFORM SPECIFIC
+# =============================================================================
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+.Spotlight-V100
+.Trashes
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# Linux
+.directory
+
+# =============================================================================
+# DEVELOPMENT TOOLS
+# =============================================================================
+
+# Docker
+.docker/
+docker-compose.override.yml
+misc/                         ← Miscellaneous development tools & configs
+
+# Database
+*.db
+*.sqlite
+*.sqlite3
+mongod.log
+
+# =============================================================================
+# NODE.JS (if used)
+# =============================================================================
+
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# =============================================================================
+# KEEP ESSENTIAL FILES FOR PROJECT
+# =============================================================================
+
+# DO NOT IGNORE:
+# - src/                    (source code)
+# - pom.xml                 (Maven configuration)
+# - mvnw, mvnw.cmd         (Maven wrapper - needed for builds)
+# - Dockerfile             (container configuration)
+# - docker-compose.yml     (services configuration)
+# - *.md files             (documentation)
+# - .gitignore             (this file)
+# - README.md              (project readme)
+
+
+# Large media files
+*.mp4
+*.tiff
+*.avi
+*.flv
+*.mov
+*.wmv
+
+
+# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
+hs_err_pid*
+replay_pid*
