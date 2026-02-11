@@ -110,6 +110,8 @@ logs/
 
 # Maven / Spring Boot
 .mvn/
+mvnw
+mvnw.cmd
 mvnw.log
 
 # Process files
