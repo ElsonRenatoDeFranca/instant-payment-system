@@ -1,0 +1,49 @@
+info:
+  application:
+    name: ${spring.application.name}
+    version: "2.0.0"
+    description: "Insurance Capitalization Title Service"
+    swaggerVersion: 2.0.0
+
+server:
+  compression:
+    enabled: true
+    mime-types: text/javascript,application/javascript,application/json
+    min-response-size: 1024
+  port: ${SERVER_PORT:8080}
+  servlet.context-path: ${APPLICATION_CONTEXT:}
+
+url:
+  platform: ${URL_PLATFORM:http://localhost:8080}
+
+gateway:
+  port: ${GATEWAY_PORT:#{null}}
+
+application:
+  timeZone: GMT-3
+  rest:
+    config:
+      timeout: 60000
+      connectTimeout: 60000
+
+spring:
+  jackson:
+    default-property-inclusion: NON_EMPTY
+  messages:
+    encoding: UTF-8
+  jmx:
+    enabled: false
+  main:
+    banner-mode: "off"
+    lazy-initialization: false
+  application:
+    name: Open Insurance
+  data:
+    web:
+      pageable:
+        one-indexed-parameters: true
+        page-parameter: page
+        size-parameter: page-size
+  profiles:
+    active: ${SPRING_PROFILES_ACTIVE:production}
+

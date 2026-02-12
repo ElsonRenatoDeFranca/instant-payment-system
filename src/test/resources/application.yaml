@@ -1,9 +1,0 @@
-spring:
-  data:
-    mongodb:
-      port: ${MONGO_TEST_PORT:27017}
-      host: ${MONGO_TEST_HOST:localhost}
-      database: ${MONGO_TEST_DB:opincaptransacional}
-      username: ${MONGO_TEST_USER:admin}
-      password: ${MONGO_TEST_PASS:admin!}
-  main.allow-bean-definition-overriding: true
